@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI-Native Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.25in;
+            @top-center {
+                content: "Executive Intelligence";
+                font-family: 'Inter', sans-serif;
+                font-size: 9pt;
+                color: #666;
+            }
+            @bottom-center {
+                content: counter(page);
+                font-family: 'Inter', sans-serif;
+                font-size: 9pt;
+                color: #666;
+            }
+        }
+
+        @page:first {
+            @top-center { content: none; }
+            @bottom-center { content: none; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #0a1628;
+            background: white;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            min-height: 100vh;
+            background: #0a1628;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2in;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48pt;
+            font-weight: 700;
+            color: #c4a35a;
+            margin-bottom: 0.5in;
+            letter-spacing: -1px;
+        }
+
+        .cover-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18pt;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 0.8in;
+            line-height: 1.4;
+        }
+
+        .cover-rule {
+            width: 3in;
+            height: 2px;
+            background: #c4a35a;
+            margin: 0 auto 0.8in auto;
+        }
+
+        .cover-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 14pt;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.2in;
+        }
+
+        .cover-title-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 2in;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 1in;
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            color: #c4a35a;
+        }
+
+        /* Table of Contents */
+        .toc-page {
+            page-break-after: always;
+            padding: 0.75in 1in 1in 1in;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .toc-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24pt;
+            font-weight: 600;
+            color: #0a1628;
+            margin-bottom: 0.5in;
+            padding-bottom: 0.2in;
+            border-bottom: 3px solid #c4a35a;
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3in;
+            padding-bottom: 0.1in;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .toc-chapter {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 500;
+            color: #0a1628;
+        }
+
+        .toc-page-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 400;
+            color: #c4a35a;
+        }
+
+        /* Chapter Pages */
+        .chapter {
+            page-break-before: always;
+            padding: 0.75in 1in 1in 1in;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .chapter-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 72pt;
+            font-weight: 700;
+            color: #c4a35a;
+            line-height: 1;
+            margin-bottom: 0.2in;
+        }
+
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28pt;
+            font-weight: 600;
+            color: #0a1628;
+            margin-bottom: 0.3in;
+            line-height: 1.2;
+        }
+
+        .chapter-rule {
+            width: 100%;
+            height: 2px;
+            background: #c4a35a;
+            margin-bottom: 0.8in;
+        }
+
+        .chapter-content {
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #0a1628;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14pt;
+            font-weight: 600;
+            color: #0a1628;
+            margin-top: 0.6in;
+            margin-bottom: 0.3in;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #0a1628;
+            margin-top: 0.4in;
+            margin-bottom: 0.2in;
+        }
+
+        p {
+            margin-bottom: 0.3in;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #0a1628;
+        }
+
+        em {
+            font-style: italic;
+            color: #c4a35a;
+        }
+
+        /* Special Elements */
+        .aha-moment {
+            background: white;
+            border: 3px solid #c4a35a;
+            padding: 0.6in;
+            margin: 0.6in 0;
+            text-align: center;
+            font-size: 14pt;
+            font-weight: 600;
+            color: #0a1628;
+            line-height: 1.4;
+        }
+
+        .build-this-now {
+            background: #fdf6e3;
+            border-left: 6px solid #0a1628;
+            padding: 0.4in;
+            margin: 0.4in 0;
+        }
+
+        .build-this-now h4 {
+            color: #0a1628;
+            margin-top: 0;
+            margin-bottom: 0.2in;
+            font-size: 13pt;
+            font-weight: 700;
+        }
+
+        .pull-quote {
+            font-style: italic;
+            color: #c4a35a;
+            font-size: 12pt;
+            font-weight: 500;
+            margin: 0.4in 0;
+            padding-left: 0.3in;
+            border-left: 4px solid #c4a35a;
+        }
+
+        /* Lists */
+        ul {
+            margin-bottom: 0.3in;
+            padding-left: 0.3in;
+        }
+
+        li {
+            margin-bottom: 0.1in;
+            position: relative;
+        }
+
+        li::marker {
+            color: #c4a35a;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.4in 0;
+            font-size: 10pt;
+        }
+
+        th {
+            background: #0a1628;
+            color: white;
+            padding: 0.15in;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.15in;
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: #0a1628;
+            color: white;
+            padding: 0.3in;
+            margin: 0.3in 0;
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+
+        /* Numbers emphasis */
+        .stat {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #c4a35a;
+        }
+
+        /* Back Cover */
+        .back-cover {
+            page-break-before: always;
+            padding: 0.75in 1in 1in 1in;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.3in;
+            margin: 0.4in 0;
+        }
+
+        .service-card {
+            background: #f4f4f4;
+            padding: 0.3in;
+            border-left: 4px solid #c4a35a;
+        }
+
+        .service-title {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #0a1628;
+            margin-bottom: 0.1in;
+        }
+
+        .service-price {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #c4a35a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #c4a35a;
+            color: white;
+            padding: 0.15in 0.4in;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            margin: 0.2in 0;
+        }
+
+        .footer-tagline {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 1in;
+            font-size: 10pt;
+        }
+
+        .page-header {
+            height: 0.2in;
+            border-top: 1px solid #c4a35a;
+            margin-bottom: 0.3in;
+        }
+
+        .cover-page .page-header {
+            display: none;
+        }
+
+        .intro-text {
+            font-style: italic;
+            font-size: 10pt;
+            color: #666;
+            margin-bottom: 0.4in;
+            text-align: center;
+        }
+
+        @media print {
+            .cover-page {
+                min-height: 9.5in;
+            }
+            .chapter {
+                break-inside: avoid-page;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+    <h1 class="cover-title">THE AI-NATIVE<br>COMPANY</h1>
+    <p class="cover-subtitle">How a 5-Person Team Outbuilds<br>Organizations 50x Their Size</p>
+    <div class="cover-rule"></div>
+    <p class="cover-author">By Henry Finn</p>
+    <p class="cover-title-small">CEO, 0N1 Corp | Executive Intelligence</p>
+    <div class="cover-footer">executiveintelligence.ai</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-page">
+    <div class="page-header"></div>
+    <h2 class="toc-title">Table of Contents</h2>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 1: The Shift</span>
+        <span class="toc-page-num">3</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 2: The Audit Nobody Does</span>
+        <span class="toc-page-num">8</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 3: The One-Person Product Launch</span>
+        <span class="toc-page-num">12</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 4: The AI Operations Stack</span>
+        <span class="toc-page-num">16</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 5: The Small Team Playbook</span>
+        <span class="toc-page-num">21</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 6: The Autonomous Revenue Machine</span>
+        <span class="toc-page-num">25</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">Chapter 7: Your First 30 Days</span>
+        <span class="toc-page-num">29</span>
+    </div>
+    
+    <div class="toc-item">
+        <span class="toc-chapter">What Happens Next</span>
+        <span class="toc-page-num">33</span>
+    </div>
+</div>
+
+<!-- CHAPTER 1 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">01</div>
+    <h1 class="chapter-title">THE SHIFT</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p class="intro-text">CEO, 0N1 Corp | $160M+ portfolio volume | Backed by a $100M fund<br>
+        Everything in this guide is real. These are my actual systems, numbers, and workflows.</p>
+        
+        <p>I run a portfolio of companies across entertainment, AI, and Web3. We've generated over <span class="stat">$160M</span> in transaction volume. We've been backed by one of crypto's largest funds. Snoop Dogg, Logan Paul, Gary Vee, and Steve Aoki hold our assets.</p>
+
+        <p>My team is <span class="stat">five people</span>.</p>
+
+        <p>Not five hundred. Not fifty. Five.</p>
+
+        <p>And we consistently outship organizations that have ten times our headcount, ten times our budget, and a hundred times our bureaucracy. Last week, we launched a product in <span class="stat">48 hours</span> that a traditional company would've spent 3 months scoping.</p>
+
+        <p>How? We didn't "adopt AI." We were born in it.</p>
+
+        <p>That distinction matters more than anything else in this guide. So let me explain it.</p>
+
+        <h3>AI-Adopted vs. AI-Native</h3>
+
+        <p>An <strong>AI-adopted company</strong> takes its existing workflows and sprinkles AI on top. They buy Copilot licenses for their engineers. They train marketing to use ChatGPT for first drafts. They add an AI chatbot to their website. The org chart stays the same. The processes stay the same. AI becomes another tool in the stack, like Slack or Zoom.</p>
+
+        <p>This is what <span class="stat">95%</span> of companies are doing right now. And it's why <span class="stat">95%</span> of companies will see marginal gains from AI.</p>
+
+        <p>An <strong>AI-native company</strong> starts from a different question entirely. Not "where can AI help?" but "if AI could do everything, what would humans still need to do?"</p>
+
+        <p>When you answer that honestly, you realize humans should be doing about <span class="stat">20%</span> of what they currently do. The other <span class="stat">80%</span> is pattern-matching, formatting, scheduling, researching, drafting, monitoring, reporting, analyzing, and organizing. Machines are better at all of it. Not theoretically. Today. Right now.</p>
+
+        <p>The AI-native company is built around that 20%. Humans do the judgment calls, the creative leaps, the relationship-building, the taste-making. Everything else is handled by AI agents, automated workflows, and intelligent systems.</p>
+
+        <p>This isn't a future prediction. This is how I operate today.</p>
+
+        <h3>The Numbers</h3>
+
+        <p>Here's what this looks like in practice at 0N1 Corp:</p>
+
+        <p><strong>Content production:</strong> We publish across 5 platforms daily. We have zero content staff. My AI agent drafts, I review and adjust tone, it publishes. One person, five platforms, every day.</p>
+
+        <p><strong>Operations:</strong> My AI agent reads my email, manages my calendar, tracks project status across all ventures, monitors key metrics, and gives me a morning brief. I spend zero time on operational overhead.</p>
+
+        <p><strong>Product development:</strong> I built and shipped a full landing page, digital product, and payment system in one evening. Through vibe coding. No engineers wrote a single line. I described what I wanted in plain English, AI built it, I refined it.</p>
+
+        <p><strong>Market intelligence:</strong> My agent scans prediction markets, news feeds, and social media 24/7. When something relevant happens in my domains (anime, AI, crypto), I know about it before my competitors because my agent never sleeps.</p>
+
+        <p><strong>Trading:</strong> A trading bot I spec'd turned <span class="stat">$150</span> into <span class="stat">$1,071</span> in two weeks. 24 signals, 10 safety gates, fully automated. It runs on my laptop while I sleep.</p>
+
+        <p>This is not magic. Every single one of these systems is buildable by you. This guide shows you how.</p>
+
+        <div class="aha-moment">
+            <strong>You don't need to hire 20 people. You need 2-3 people and the right AI infrastructure.</strong>
+            <br><br>
+            The cost of that infrastructure? A few hundred dollars a month in API fees and subscriptions.
+            <br><br>
+            The cost of 20 employees? $1.5 million a year minimum.
+        </div>
+
+        <p>The AI-native company isn't just faster or more efficient. It's a fundamentally different economic model. And if you're still operating on the old model, you're competing against people who have 100x lower overhead and 10x faster execution.</p>
+
+        <p>The gap is widening every month. Every month you wait, the people who moved first get further ahead.</p>
+
+        <p>That's the shift. Now let's build.</p>
+    </div>
+</div>
+
+<!-- CHAPTER 2 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">02</div>
+    <h1 class="chapter-title">THE AUDIT NOBODY DOES</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>Most AI consultants will tell you to audit your workflows and find where AI can help. That's backwards.</p>
+
+        <p>Here's the audit that actually changes how you think:</p>
+
+        <h3>The Subtraction Audit</h3>
+
+        <p>Instead of asking "what can AI do for us?", ask this:</p>
+
+        <p class="pull-quote">"If my AI could do everything perfectly, what would I still need a human for?"</p>
+
+        <p>Write down every answer. Be ruthlessly honest. Not "well, someone needs to approve the social posts" (AI can draft them, you review in 30 seconds). Real human-only work:</p>
+
+        <ul>
+            <li>Deciding the company's strategic direction</li>
+            <li>Building relationships with key partners</li>
+            <li>Making judgment calls with incomplete information</li>
+            <li>Creative direction and taste</li>
+            <li>Being the face of the brand</li>
+            <li>Navigating ambiguous ethical situations</li>
+        </ul>
+
+        <p>Everything that's NOT on that list is a candidate for AI. Everything.</p>
+
+        <h3>How to Run It</h3>
+
+        <p>Block 90 minutes. No phones. Just you and a whiteboard (or a doc).</p>
+
+        <p><strong>Step 1: List every recurring task in your organization.</strong> All of them. From "schedule team meetings" to "analyze quarterly revenue." Be specific. Not "marketing" but "draft LinkedIn post" and "research competitor pricing" and "create monthly analytics report."</p>
+
+        <p>You should have 50-100 tasks.</p>
+
+        <p><strong>Step 2: For each task, ask: "Would a well-trained AI agent do this adequately?"</strong></p>
+
+        <p>Not perfectly. Adequately. Because "adequate done instantly" beats "perfect done in three days" nearly every time.</p>
+
+        <p>Mark each task: AUTOMATE (AI does it), AUGMENT (AI does 80%, human refines), or HUMAN (requires real human judgment).</p>
+
+        <p><strong>Step 3: Look at the AUTOMATE column.</strong> Count the hours per week those tasks consume across your team. Multiply by your average hourly cost. That's the money you're leaving on the table every single week.</p>
+
+        <p>In my experience, the number shocks people. It's usually <span class="stat">40-60%</span> of total team hours.</p>
+
+        <p><strong>Step 4: Now look at the HUMAN column.</strong> That's your actual company. That's what you should be hiring for, managing, optimizing. Everything else is infrastructure, and infrastructure should be automated.</p>
+
+        <h3>The Uncomfortable Truth</h3>
+
+        <p>When I run this exercise with executives, the most uncomfortable moment isn't seeing how much can be automated. It's realizing that several roles in their organization exist primarily to do work that AI can do better.</p>
+
+        <p>I'm not saying fire everyone. I'm saying redeploy them. Move your people from tasks AI handles (formatting reports, triaging email, scheduling, data entry, first-draft writing) to work AI can't do (strategy, relationships, creative direction, judgment).</p>
+
+        <p>The companies that make this shift win. The companies that protect their old org charts because "that's how we've always done it" lose. Slowly at first, then all at once.</p>
+
+        <div class="build-this-now">
+            <h4>BUILD THIS NOW: Your 30-Minute Subtraction Audit</h4>
+            <p>Set a timer for 30 minutes. List every task you personally did this week. Be specific. Now mark each one AUTOMATE, AUGMENT, or HUMAN.</p>
+            <p>Share your results on LinkedIn. Tag me. I'll respond to every single one. Use #AISubtractionAudit.</p>
+            <p>The viral moment here isn't the exercise. It's what people realize when they see their own list.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 3 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">03</div>
+    <h1 class="chapter-title">THE ONE-PERSON PRODUCT LAUNCH</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>This is the chapter that will break your brain.</p>
+
+        <p>I'm going to show you how I shipped a complete product in a single evening. Not a prototype. Not a mockup. A real product, with a real website, that accepts real payments. In one sitting.</p>
+
+        <h3>What is Vibe Coding?</h3>
+
+        <p>Vibe coding is building software by describing what you want in plain English and having AI generate the code. You don't need to know Python, JavaScript, HTML, or any programming language. You need to know what you want.</p>
+
+        <p>Think of it like being an architect. You don't lay bricks. You draw the blueprint. AI lays the bricks.</p>
+
+        <h3>The Evening Build</h3>
+
+        <p>Here's what happened on March 12, 2026. A real evening. Not a hypothetical.</p>
+
+        <p><strong>7:00 PM</strong> — I decided to build a landing page for Executive Intelligence, my AI consulting company. I had no website, no product page, no payment system.</p>
+
+        <p><strong>7:15 PM</strong> — I told my AI agent (his name is Sol) what I wanted. A professional single-page website with: hero section, credibility bar, three service offerings, a how-it-works section, an about section with stats, a playbook purchase section, and a call-to-action footer.</p>
+
+        <p><strong>7:45 PM</strong> — Sol built the entire site. HTML, CSS, everything. I opened it in my browser and reviewed it. It looked professional. Not perfect. But 90% there.</p>
+
+        <p><strong>8:00 PM</strong> — I refined. "Make the hero bigger. Change the pricing on the services. Add the GK Labs link in the footer." Sol made each change in seconds.</p>
+
+        <p><strong>8:15 PM</strong> — Separately, Sol had written this guide you're reading right now. Seven chapters. Real content. Not filler.</p>
+
+        <p><strong>8:30 PM</strong> — I set up a Gumroad account (5 minutes). Created the product listing. Set the price.</p>
+
+        <p><strong>8:45 PM</strong> — Deployed the website to Vercel (free hosting). One command in the terminal.</p>
+
+        <p><strong>9:00 PM</strong> — A complete business was live. Website, digital product, payment processing, booking system for consulting calls. Two hours, start to finish.</p>
+
+        <p>A traditional company would have: hired a web agency (<span class="stat">$5-15K</span>), waited 4-6 weeks, gone through 3 rounds of revisions, hired a copywriter (<span class="stat">$2-5K</span>), set up Stripe integration (a developer for a week), and launched two months later.</p>
+
+        <p>I did it in two hours for <span class="stat">$0</span> in additional costs.</p>
+
+        <h3>How You Can Do This</h3>
+
+        <p>You don't need my AI agent (yet). You need:</p>
+
+        <ul>
+            <li><strong>Claude or ChatGPT</strong> (free or $20/month)</li>
+            <li><strong>A clear idea of what you want to build</strong></li>
+            <li><strong>The willingness to describe it and iterate</strong></li>
+        </ul>
+
+        <p>Here's the prompt framework:</p>
+
+        <div class="code-block">
+"Build me a [type of product/page]. It should include [list specific sections or features]. The tone should be [describe]. The target audience is [describe]. Use [any specific design preferences]."
+        </div>
+
+        <p>Then iterate: "Change the headline to X. Move the pricing section above the testimonials. Make the CTA button blue."</p>
+
+        <p>Each cycle takes 30 seconds. You'll have something ready to ship within an hour.</p>
+
+        <h3>The Key Insight</h3>
+
+        <p>The expensive thing was never the code. It was never the design. It was never the hosting. The expensive thing was the <strong>TIME and COORDINATION</strong> required to get all those pieces to come together.</p>
+
+        <p>AI collapsed that time from months to hours. And the coordination from a team of 5-10 people to one person talking to their computer.</p>
+
+        <p>This changes everything about how businesses can be started, tested, and scaled. A single person can now launch 10 products in the time it used to take to launch one. And if 9 of them fail, the one that works can be scaled with the same lean infrastructure.</p>
+
+        <div class="build-this-now">
+            <h4>BUILD THIS NOW: Ship Something Tonight</h4>
+            <p>Pick one of these:</p>
+            <p>1. <strong>A landing page for your side project or business idea</strong> — Describe it to ChatGPT or Claude. Get the HTML. Open it in your browser. Refine it. Deploy it on Vercel (free) or Netlify (free).</p>
+            <p>2. <strong>A simple tool or calculator</strong> — Something useful for your industry. An ROI calculator. A checklist generator. A proposal template. Have AI build it as a web page.</p>
+            <p>3. <strong>A digital product</strong> — A guide, template pack, or framework specific to your expertise. Have AI help you write it. Upload to Gumroad. Set a price. You're live.</p>
+            <p>Post what you shipped on LinkedIn. Include a screenshot. Tag me. Use #ShippedInOneEvening.</p>
+            <p>The first time you ship something this fast, you'll never think about business building the same way again.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 4 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">04</div>
+    <h1 class="chapter-title">THE AI OPERATIONS STACK</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>This is the chapter where I show you inside my actual company. Not theory. The real tools, agents, and workflows running 0N1 Corp right now.</p>
+
+        <h3>Meet Sol Finn</h3>
+
+        <p>Sol Finn is my AI operations partner. Not a chatbot. An agent.</p>
+
+        <p>The difference: a chatbot waits for you to ask a question and then answers it. An agent has access to your tools, your data, your systems. It takes actions on your behalf, within rules you define.</p>
+
+        <p>Sol runs on a framework called OpenClaw, connected to Claude (Anthropic's most powerful AI model). Here's what Sol can do:</p>
+
+        <ul>
+            <li>Read and write files on my computer</li>
+            <li>Read and respond to emails</li>
+            <li>Manage my calendar</li>
+            <li>Search the web and fetch content</li>
+            <li>Run code and terminal commands</li>
+            <li>Send and receive messages on Telegram, WhatsApp</li>
+            <li>Scan markets and generate trading signals</li>
+            <li>Build websites, apps, and documents</li>
+            <li>Maintain a persistent memory across conversations</li>
+        </ul>
+
+        <p>Sol wakes up every session, reads his memory files, and knows exactly who he is, who I am, what we're working on, and what needs to happen next.</p>
+
+        <p>I don't manage Sol with a to-do list. I built a system where Sol manages himself:</p>
+
+        <p><strong>HEARTBEAT system:</strong> Every 15-30 minutes, Sol checks in. What's the plan for today? What's on track? What's blocked? Are there emails that need attention? Any trading signals above threshold? He does this automatically. If something needs my attention, he alerts me. If everything's fine, he stays quiet.</p>
+
+        <p><strong>3-Layer Memory:</strong></p>
+        <ul>
+            <li>Layer 1: Knowledge graph. Durable facts about my world organized by entity (companies, people, projects).</li>
+            <li>Layer 2: Daily notes. A timeline of what happened each day.</li>
+            <li>Layer 3: Tacit knowledge. Patterns about how I operate. My preferences, communication style, what motivates me, what drains me.</li>
+        </ul>
+
+        <p>This means Sol gets better over time. He learns that I hate em dashes in writing. He learns that I shut down when overwhelmed and need the priority list cut to 3 items. He learns my voice so content he drafts sounds like me, not like AI.</p>
+
+        <h3>The Full Stack</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Layer</th>
+                    <th>What</th>
+                    <th>Tool</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AI Brain</td>
+                    <td>Reasoning, writing, analysis</td>
+                    <td>Claude Opus (Anthropic)</td>
+                </tr>
+                <tr>
+                    <td>Agent Framework</td>
+                    <td>Tools, memory, channels</td>
+                    <td>OpenClaw</td>
+                </tr>
+                <tr>
+                    <td>Communication</td>
+                    <td>Talk to me anywhere</td>
+                    <td>Telegram, WhatsApp</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>Read, draft, send</td>
+                    <td>Gmail API (gog CLI)</td>
+                </tr>
+                <tr>
+                    <td>Calendar</td>
+                    <td>Schedule, remind, brief</td>
+                    <td>Google Calendar API</td>
+                </tr>
+                <tr>
+                    <td>Files</td>
+                    <td>Document everything</td>
+                    <td>Local filesystem</td>
+                </tr>
+                <tr>
+                    <td>Code</td>
+                    <td>Build products</td>
+                    <td>Claude Code, Codex</td>
+                </tr>
+                <tr>
+                    <td>Research</td>
+                    <td>Web search, news scanning</td>
+                    <td>Brave Search API</td>
+                </tr>
+                <tr>
+                    <td>Social</td>
+                    <td>Content, engagement</td>
+                    <td>Twitter/X API (xurl)</td>
+                </tr>
+                <tr>
+                    <td>Trading</td>
+                    <td>Market scanning, execution</td>
+                    <td>Custom bot + platform APIs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The total cost of running this stack: roughly <span class="stat">$200/month</span> in API fees. That's it. For a system that replaces what would traditionally require an executive assistant (<span class="stat">$4-6K/month</span>), a social media manager (<span class="stat">$3-5K/month</span>), a research analyst (<span class="stat">$4-6K/month</span>), and a project manager (<span class="stat">$5-8K/month</span>).</p>
+
+        <p><span class="stat">$200/month</span> vs. <span class="stat">$16-25K/month</span>. Same output. Often better, because AI doesn't forget, doesn't get tired, and doesn't need PTO.</p>
+
+        <h3>How to Build Your Own (Simplified)</h3>
+
+        <p>You don't need to start with the full stack. Start with one agent doing one job:</p>
+
+        <p><strong>Level 1: The Email Agent</strong><br>
+        Set up an AI that reads your email every morning, summarizes what matters, drafts responses to the routine stuff, and flags anything urgent. This alone saves 1-2 hours per day.</p>
+
+        <p><strong>Level 2: The Content Agent</strong><br>
+        An AI that takes your ideas (voice memos, rough notes, stream-of-consciousness messages) and turns them into polished content across multiple platforms. You talk for 5 minutes, it produces a LinkedIn post, three tweets, and a newsletter paragraph.</p>
+
+        <p><strong>Level 3: The Operations Agent</strong><br>
+        A full agent like Sol. Reads your email, manages your calendar, tracks your projects, gives you a daily brief, and handles routine decisions within rules you set.</p>
+
+        <p>Each level builds on the last. Start where you are. Scale as you get comfortable.</p>
+
+        <div class="build-this-now">
+            <h4>BUILD THIS NOW: Your First AI Agent</h4>
+            <p>Go to ChatGPT or Claude. Start a conversation. Say:</p>
+            <div class="code-block">"You are my executive assistant. Every morning I'm going to paste my unread emails here. I want you to: categorize each as urgent, important, informational, or delegatable. For urgent items, draft a response. For delegatable items, tell me who to forward to and draft the forwarding message. For informational items, give me a one-sentence summary."</div>
+            <p>Tomorrow morning, paste your unread email subjects and summaries into the chat. Watch what happens.</p>
+            <p>This isn't the full agent experience (no automation, no tools, no memory). But it shows you the value. Once you feel the time savings, you'll want the real thing. That's when you come talk to us.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 5 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">05</div>
+    <h1 class="chapter-title">THE SMALL TEAM PLAYBOOK</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>The question I get most from other founders: "How do you do all this with five people?"</p>
+
+        <p>The answer is that my five people aren't doing what your fifty people are doing. My five people are doing the 20% that requires human judgment. AI handles the other 80%.</p>
+
+        <h3>The AI-Native Org Chart</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Traditional Company (50 people)</th>
+                    <th>AI-Native Company (5 people)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CEO</td>
+                    <td><strong>CEO / Vision (Henry):</strong> Strategic direction, relationships, creative direction, taste</td>
+                </tr>
+                <tr>
+                    <td>VP Engineering (manages 15 engineers)</td>
+                    <td><strong>Dev Lead (full-stack):</strong> Architecture decisions, complex integrations, AI oversight</td>
+                </tr>
+                <tr>
+                    <td>VP Marketing (manages 8 marketers)</td>
+                    <td><strong>Dev 2 (full-stack):</strong> Product builds, automation, infrastructure</td>
+                </tr>
+                <tr>
+                    <td>VP Operations (manages 6 ops people)</td>
+                    <td><strong>Community / Growth:</strong> Human relationships, partnerships, community culture</td>
+                </tr>
+                <tr>
+                    <td>VP Sales (manages 10 salespeople)</td>
+                    <td><strong>AI Operations (Sol Finn):</strong> Everything else</td>
+                </tr>
+                <tr>
+                    <td>Finance team (5 people)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Admin/HR (5 people)</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>"Everything else" is a lot. Content production. Email management. Calendar. Research. Data analysis. Report generation. Market monitoring. Social media scheduling. Customer support triage. Invoice processing. Meeting prep. Competitive intelligence. Performance tracking.</p>
+
+        <p>In a traditional company, that list requires 30+ people. In an AI-native company, it requires well-configured AI.</p>
+
+        <h3>The Handoff Model</h3>
+
+        <p>The key to making this work is clean handoffs between humans and AI. Here's how we structure them:</p>
+
+        <p class="pull-quote">AI Initiates → Human Decides → AI Executes</p>
+
+        <p><strong>Example:</strong> Sol scans the market and finds a high-conviction trading signal. Sol presents the signal to me with reasoning. I say yes or no. Sol executes (or doesn't).</p>
+
+        <p><strong>Example:</strong> Sol drafts a LinkedIn post based on something we shipped today. I review it, adjust three words, approve. Sol publishes.</p>
+
+        <p><strong>Example:</strong> Sol summarizes an incoming partnership inquiry email. I decide if it's worth pursuing and give a one-line direction ("interested, suggest a call next week"). Sol drafts the full response.</p>
+
+        <p>In each case, the human work is the 10-second judgment call. The AI work is the 30-minute preparation and execution.</p>
+
+        <h3>The Multiplier Math</h3>
+
+        <p>One person + AI can produce the output of 5-10 people in most knowledge-work functions. Here's the math I've observed:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Function</th>
+                    <th>Traditional Staff</th>
+                    <th>AI-Native Staff</th>
+                    <th>Multiplier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Content production</td>
+                    <td>3-5 people</td>
+                    <td>1 person + AI</td>
+                    <td>3-5x</td>
+                </tr>
+                <tr>
+                    <td>Research & analysis</td>
+                    <td>2-3 people</td>
+                    <td>AI agent</td>
+                    <td>5-10x</td>
+                </tr>
+                <tr>
+                    <td>Email & admin</td>
+                    <td>1-2 people</td>
+                    <td>AI agent</td>
+                    <td>Infinite (zero human time)</td>
+                </tr>
+                <tr>
+                    <td>Product dev</td>
+                    <td>5-10 engineers</td>
+                    <td>1-2 devs + AI coding</td>
+                    <td>3-5x</td>
+                </tr>
+                <tr>
+                    <td>Customer support (tier 1)</td>
+                    <td>3-5 people</td>
+                    <td>AI + 1 person for escalation</td>
+                    <td>3-5x</td>
+                </tr>
+                <tr>
+                    <td>Social media</td>
+                    <td>2-3 people</td>
+                    <td>1 person + AI</td>
+                    <td>2-3x</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The compound effect: a 5-person AI-native team produces the output of a 25-40 person traditional team. At 1/5 to 1/8 the cost.</p>
+
+        <h3>The Leadership Shift</h3>
+
+        <p>If you're a CEO or team lead in an AI-native company, your job changes fundamentally:</p>
+
+        <p><strong>Old job:</strong> Manage people. Coordinate work. Sit in status meetings. Review deliverables. Approve expenses. Fight fires.</p>
+
+        <p><strong>New job:</strong> Set direction. Make judgment calls. Build relationships. Create culture. Think strategically. Stay curious.</p>
+
+        <p>The irony: the "new job" is what most leaders wanted to do all along. They just couldn't because they were buried in the operational overhead of managing a large team.</p>
+
+        <p>AI doesn't replace leadership. It frees leadership to actually lead.</p>
+
+        <div class="build-this-now">
+            <h4>BUILD THIS NOW: Your AI-Native Org Chart</h4>
+            <p>Take your current organization (even if it's just you). Draw the current org chart. Now redraw it as if AI could handle every non-judgment task. What roles change? Which ones disappear? Which new ones emerge?</p>
+            <p>The gap between those two charts is your transformation opportunity. Post both on LinkedIn. Use #AINativeOrg.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 6 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">06</div>
+    <h1 class="chapter-title">THE AUTONOMOUS REVENUE MACHINE</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>This is the chapter most people will skip to first. And that's fine. Because this is where it gets real.</p>
+
+        <p>An AI-native company doesn't just use AI to save time. It uses AI to generate revenue while the founder sleeps.</p>
+
+        <h3>Revenue Stream 1: Automated Trading</h3>
+
+        <p>Here's a real story. I had a friend who built a trading bot for Kalshi (a prediction market). The bot trades 15-minute binary contracts on whether BTC, ETH, SOL, and XRP will go up or down. It uses 24 weighted signals, 10 safety gates, and runs automatically every 15 minutes.</p>
+
+        <p>Starting capital: <span class="stat">$150</span>.<br>
+        Current value after 2 weeks: <span class="stat">$1,071</span>.<br>
+        That's a <span class="stat">7x</span> return.</p>
+
+        <p>Key insights from the system:</p>
+        <ul>
+            <li>Cross-market consensus (what Polymarket thinks) is the single strongest signal</li>
+            <li>Mean-reversion beats trend-following on 15-minute crypto</li>
+            <li>Certain hours have 0% win rate. The bot simply doesn't trade during those hours.</li>
+            <li>Flat bet sizing ($25 max) outperformed Kelly criterion scaling</li>
+            <li>The bot has a kill switch: if daily losses hit $150, it stops. No exceptions.</li>
+        </ul>
+
+        <p>This isn't "get rich quick." The bot has a <span class="stat">52-65%</span> win rate depending on the asset. It wins by having a slight edge and executing it hundreds of times with perfect discipline. No emotions. No FOMO. No revenge trading.</p>
+
+        <p>And it runs on a laptop. While the founder sleeps.</p>
+
+        <h3>Revenue Stream 2: Digital Products on Autopilot</h3>
+
+        <p>The guide you're reading right now was written in a few hours by me and my AI agent. It's being sold on Gumroad for <span class="stat">$197</span>. Every sale requires zero additional work from me. The content was created once. The payment system handles everything.</p>
+
+        <p>But here's the deeper play: this playbook is a funnel. A percentage of readers will want help implementing what they've read. They'll book a call. Some will become <span class="stat">$10K+</span> consulting clients. The $197 playbook pays for itself many times over as a lead generation tool.</p>
+
+        <p>The AI-native version of this: my agent can create a new digital product every week. Frameworks, templates, tool guides, industry-specific playbooks. Each one is a new revenue stream and a new entry point to the consulting business.</p>
+
+        <h3>Revenue Stream 3: Content Funnels</h3>
+
+        <p>Here's the system:</p>
+
+        <ol>
+            <li>I have one insight or experience per day (sometimes more).</li>
+            <li>I tell Sol about it in a 2-minute voice memo or text message.</li>
+            <li>Sol turns it into a LinkedIn post, 3 tweets, a short-form video script, and an email newsletter segment.</li>
+            <li>Content gets published across all platforms.</li>
+            <li>Each piece links back to the playbook, the consulting booking page, or a specific product.</li>
+            <li>Leads come in. Sales happen. While I'm doing other things.</li>
+        </ol>
+
+        <p><strong>The old way:</strong> hire a content team (<span class="stat">$8-15K/month</span>), have meetings about editorial calendars, review drafts, give feedback, approve posts. 10+ hours per week of my time.</p>
+
+        <p><strong>The new way:</strong> 2 minutes of my time per piece of content. AI does the rest.</p>
+
+        <h3>Revenue Stream 4: AI Agents as a Service</h3>
+
+        <p>This is the next evolution. Once your AI agent is proven (it manages your ops, saves you time, generates results), you package it and sell access to others.</p>
+
+        <p>I'm building this through Executive Intelligence:</p>
+        <ul>
+            <li>Audit a client's business → set up their AI agent → charge monthly advisory to maintain it</li>
+            <li><span class="stat">$5-10K/month</span> per client</li>
+            <li>10 clients = <span class="stat">$50-100K/month</span></li>
+            <li>Still a 5-person team</li>
+        </ul>
+
+        <p>The product IS the expertise. The delivery vehicle IS the AI.</p>
+
+        <h3>The Compound Effect</h3>
+
+        <p>None of these streams requires significant ongoing time. The trading bot runs. The digital products sell. The content publishes. The consulting calendar fills from inbound leads. Each stream generates revenue independently and feeds the others.</p>
+
+        <p>This is what "autonomous revenue" means. Not passive income (which implies doing nothing). Active systems that run without your constant attention because AI handles the execution.</p>
+
+        <div class="build-this-now">
+            <h4>BUILD THIS NOW: Your First Autonomous Revenue Stream</h4>
+            <p>Pick ONE:</p>
+            <p>1. <strong>Write a digital product this weekend.</strong> Take your deepest area of expertise. Write a 10-20 page guide. Use AI to help you structure and draft it. Upload to Gumroad. Set a price. Share on LinkedIn.</p>
+            <p>2. <strong>Build a content system.</strong> Commit to one post per day for 30 days. Use AI to draft each one from a rough idea. Track what performs. By day 30 you'll have a content machine.</p>
+            <p>3. <strong>Research a trading or market opportunity.</strong> What domain do you have unique knowledge in? Where do you have an information advantage? Start with paper trading (not real money) and validate your edge.</p>
+            <p>Post your progress daily. Use #AutonomousRevenue.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 7 -->
+<div class="chapter">
+    <div class="page-header"></div>
+    <div class="chapter-number">07</div>
+    <h1 class="chapter-title">YOUR FIRST 30 DAYS</h1>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>You've read the framework. Now build it. One action per day. By day 30, you'll have a fundamentally different relationship with your business.</p>
+
+        <h3>Week 1: Foundation</h3>
+
+        <p><strong>Day 1:</strong> Run the Subtraction Audit from Chapter 2. List every task. Categorize as AUTOMATE, AUGMENT, HUMAN. Post your results. #AISubtractionAudit</p>
+
+        <p><strong>Day 2:</strong> Set up your primary AI tool. Claude or ChatGPT. Pro/Team plan. Start using it for every piece of writing you do today. Every email, every message, every document.</p>
+
+        <p><strong>Day 3:</strong> Build your first workflow. Pick the highest-frequency task from your AUTOMATE list. Build a system where AI handles it. Even if it's just "paste emails into ChatGPT and ask for summaries." Start simple.</p>
+
+        <p><strong>Day 4:</strong> Vibe code something. Follow the Chapter 3 framework. Build a landing page, a tool, or a simple product. Ship it. Show someone. #ShippedInOneEvening</p>
+
+        <p><strong>Day 5:</strong> Set up your content pipeline. Create a shared doc where you dump raw ideas throughout the day. At the end of the day, feed them to AI and get polished content back. Schedule one post.</p>
+
+        <p><strong>Day 6:</strong> Draw your AI-native org chart from Chapter 5. Compare it to reality. Identify the biggest gap.</p>
+
+        <p><strong>Day 7:</strong> Rest. Review your week. What surprised you? What felt easier than expected? What was harder? Write a reflection post. #AINativeWeek1</p>
+
+        <h3>Week 2: Systems</h3>
+
+        <p><strong>Day 8:</strong> Automate your email. Use the framework from Chapter 4. Every morning, have AI triage your inbox.</p>
+
+        <p><strong>Day 9:</strong> Build your second workflow. Pick the next item from your AUTOMATE list.</p>
+
+        <p><strong>Day 10:</strong> Create your first digital product. A template, a guide, a framework. Use AI to help. Upload to Gumroad.</p>
+
+        <p><strong>Day 11:</strong> Research one autonomous revenue opportunity from Chapter 6. What domain do you have edge in?</p>
+
+        <p><strong>Day 12:</strong> Set up a content repurposer. Take one piece of content you created this week and turn it into 5 different formats using AI.</p>
+
+        <p><strong>Day 13:</strong> Connect with 5 people on LinkedIn who are also building AI-native businesses. Comment on their posts. Build relationships.</p>
+
+        <p><strong>Day 14:</strong> Weekly review. What's working? What needs adjustment? Post your progress. #AINativeWeek2</p>
+
+        <h3>Week 3: Acceleration</h3>
+
+        <p><strong>Day 15:</strong> Build something more ambitious. A small app. An automation that connects two systems. A bot that does something useful.</p>
+
+        <p><strong>Day 16:</strong> Start your content engine. Post daily from here forward. Every day, one piece of content published.</p>
+
+        <p><strong>Day 17:</strong> Automate your third workflow. You should be noticing a pattern: each automation frees up time for the next one.</p>
+
+        <p><strong>Day 18:</strong> Explore AI agents. Try OpenClaw, or build a more sophisticated prompt chain in ChatGPT. Give your AI a persistent role and system prompt.</p>
+
+        <p><strong>Day 19:</strong> Revenue check. Has anything you've built generated money yet? If yes, how do you 10x it? If no, what's the blocker?</p>
+
+        <p><strong>Day 20:</strong> Help someone else. Share what you've learned. Teach a colleague. Write about a mistake you made. Give back. #AINativeWeek3</p>
+
+        <p><strong>Day 21:</strong> Weekly review and reflection.</p>
+
+        <h3>Week 4: Scale</h3>
+
+        <p><strong>Day 22:</strong> Package your best workflow as a template or product. Something other people can use.</p>
+
+        <p><strong>Day 23:</strong> Reach out to 3 potential clients or partners. Use what you've built as proof of concept.</p>
+
+        <p><strong>Day 24:</strong> Build your AI agent's memory. Give it context about your business, your preferences, your goals. Make it smarter about you.</p>
+
+        <p><strong>Day 25:</strong> Create your second digital product.</p>
+
+        <p><strong>Day 26:</strong> Analyze your content performance. What resonated? Double down on it.</p>
+
+        <p><strong>Day 27:</strong> Plan your next 90 days. You now know what AI can do for your business. What's the highest-leverage thing to build next?</p>
+
+        <p><strong>Day 28:</strong> Execute on that plan. Start building it today.</p>
+
+        <p><strong>Day 29:</strong> Document everything you've built in the last 28 days. Write the case study of your own transformation.</p>
+
+        <p><strong>Day 30:</strong> Publish your 30-day case study. Share what changed. Share the numbers. Share the before and after. #AINative30Days</p>
+    </div>
+</div>
+
+<!-- BACK COVER / CTA PAGE -->
+<div class="back-cover">
+    <div class="page-header"></div>
+    <h2 class="chapter-title">WHAT HAPPENS NEXT</h2>
+    <div class="chapter-rule"></div>
+    
+    <div class="chapter-content">
+        <p>If you followed this guide, you now have:</p>
+        <ul>
+            <li>A clear map of what AI should handle in your business</li>
+            <li>At least one working AI workflow saving you real time</li>
+            <li>Something you shipped through vibe coding</li>
+            <li>A content system producing daily output</li>
+            <li>A digital product generating revenue</li>
+            <li>A growing network of AI-native builders</li>
+            <li>A fundamentally different understanding of how businesses can operate</li>
+        </ul>
+
+        <p>Some of you will take this and run. You have everything you need.</p>
+
+        <p>Some of you will want help going deeper. Faster. With someone who's already built all of this and can shortcut your learning curve by months.</p>
+
+        <p>That's what Executive Intelligence exists for.</p>
+
+        <h3>Work With Us</h3>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-title">AI Readiness Sprint</div>
+                <p>We embed in your business for 2 weeks. Audit your workflows, train your team, build your first automations, and deliver a roadmap.</p>
+                <div class="service-price">Starting at $10,000</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Monthly Advisory</div>
+                <p>Ongoing support as you scale your AI capabilities. Custom automations, strategy sessions, priority Slack access.</p>
+                <div class="service-price">Starting at $5,000/month</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Community</div>
+                <p>Join the Executive Intelligence community of AI-native builders. Weekly calls, shared resources, direct access to Henry.</p>
+                <div class="service-price">Coming soon</div>
+            </div>
+        </div>
+
+        <p><strong>Book a call:</strong> <a href="https://cal.com/henry-finn-starlordy/important-global" class="cta-button">cal.com/henry-finn-starlordy/important-global</a></p>
+
+        <p><strong>Follow Henry:</strong> <a href="https://linkedin.com/in/ohenryfinn">linkedin.com/in/ohenryfinn</a></p>
+
+        <h3 style="margin-top: 1in;">THE MANIFESTO</h3>
+
+        <p>The era of hiring your way to scale is over.</p>
+
+        <p>The era of raising $5M before building anything is over.</p>
+
+        <p>The era of 18-month product cycles is over.</p>
+
+        <p>We are entering the era of the AI-native company. Small teams. Huge output. Personal AI agents that know your business better than any employee ever could. Products shipped in hours, not months. Revenue streams that run while you sleep.</p>
+
+        <p>The tools are here. The infrastructure is ready. The only question is whether you'll build with them or compete against people who do.</p>
+
+        <p>I know which side I'm on.</p>
+
+        <p>See you out there.</p>
+
+        <p style="margin-top: 0.5in;"><em>Henry Finn<br>
+        CEO, 0N1 Corp<br>
+        Founder, Executive Intelligence</em></p>
+
+        <hr style="margin: 1in 0 0.3in 0; border: none; border-top: 1px solid #ccc;">
+
+        <p style="font-size: 9pt; color: #666;">© 2026 Executive Intelligence / 0N1 Corp Limited</p>
+
+        <div class="footer-tagline">Built with AI. Obviously.</div>
+    </div>
+</div>
+
+</body>
+</html>

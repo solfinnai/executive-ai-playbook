@@ -1,0 +1,16 @@
+{
+  "name": "executive-ai-playbook",
+  "version": "1.0.0",
+  "description": "- **Name:** The AI-Native Company - **Subtitle:** How a 5-Person Team Outbuilds Organizations 50x Their Size - **Price:** $197 - **Format:** PDF (designed, professional) - **Platform:** Gumroad - **Target:** Founders, CEOs, team leads who want to compete with 10x less headcount",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer": "^24.39.1"
+  }
+}
